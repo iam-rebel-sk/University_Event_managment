@@ -32,6 +32,8 @@ public class EventService {
             presentEvent.setEventStartTime(newEvent.getEventStartTime());
             presentEvent.setEventEndTime(newEvent.getEventEndTime());
 
+            eventRepo.save(presentEvent);
+
             return "Event with id: "+id+" has updated successfully.";
         }
         return  "Event with id: "+id+" not found.";

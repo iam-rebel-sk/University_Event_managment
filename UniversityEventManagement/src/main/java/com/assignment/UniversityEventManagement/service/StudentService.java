@@ -31,7 +31,10 @@ public class StudentService {
     @Transactional
     public String updateStudentDepartmentById(Long id, Department newDepartment) {
 
-        studentRepo.setStudentDepartment(id, Department.valueOf(newDepartment.name()));
+        //studentRepo.setStudentDepartment(id, Department.valueOf(newDepartment.name()));
+        Student presentStudent = studentRepo.findById(id).orElseThrow();
+        presentStudent.setStudentDepartment(newDepartment);
+        studentRepo.save(presentStudent);
         return "Student with id: "+id+ " updated successfully.";
 
     }
